@@ -41,7 +41,7 @@ def send_notification(event_name, data, key=None):
     )
 
 
-def send_end_notification(event_name, key=None, value3=''):
+def send_completion_notification(event_name, key=None, value3=''):
     """
     Sends a notification to a webhook when a program
     has stopped running.
@@ -58,13 +58,12 @@ def send_end_notification(event_name, key=None, value3=''):
         value1=value1,
         value2=platform.uname().node,
         value3=value3,
-        occurredat=datetime.now().isoformat(),
     )
 
     send_notification(event_name, data, key)
 
 
-class SendEndNotification():
+class SendCompletionNotification():
     def __init__(self, event_name, key=None):
         self.event_name = event_name
         self.key = key
@@ -75,9 +74,9 @@ class SendEndNotification():
     def __exit__(self, _type, value, traceback):
         value3 = ''
         if traceback is not None:
-            value3 = f"Got exception {_type.__name__}."
+            value3 = "Got exception {name}".format(name=_type.__name__)
 
-        send_end_notification(
+        send_completion_notification(
             self.event_name,
             self.key,
             value3,

@@ -1,7 +1,7 @@
-pyifttt: The Python IFTTT Webhook Wrapper
-=========================================
+pyifttt: The Python IFTTT Webhook Interface
+===========================================
 
-This package provides a simple wrapper to interact with If This Then That (https://ifttt.com/) webhook events.
+This package provides a simple interface to interact with If This Then That (https://ifttt.com/) webhook events.
 
 This project was born from the need to receive push notifications on a smartphone after long running jobs had finished running, particularly using a free service such as IFTTT.
 
@@ -47,8 +47,8 @@ Since including a private key in script files can be bothersome and repetitive, 
 2. As a system env variable named IFTTT_KEY (``export IFTTT_KEY="MySuperPrivateKey``).
 3. As a home file (~/.ifttt). The only contents this file should have is the key.
 
-Job Ending Notification
-^^^^^^^^^^^^^^^^^^^^^^^
+Job Completion Notification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 pyifttt implements a general notification system for push notification of program exits.
 
@@ -62,24 +62,24 @@ Here's how you would use pyifttt to receive push notifications for when your lon
 
 .. code:: python
 
-    from pyifttt.webhook import SendEndNotification
+    from pyifttt.webhook import SendCompletionNotification
 
-    with SendEndNotification('test_event'):
+    with SendCompletionNotification('test_event'):
         execute_long_job()
 
 This will send a push notification to your smartphone or other device with the following structure:
 
 ::
 
-    The program long_job.py, running on host machine Server1, finished at 2019-11-22T19:09:01.441997.
+    The program long_job.py, running on host machine Server1, finished at November 22, 2019 at 09:30PM.
 
 If it had found an exception, it would show the following message:
 
 ::
 
-    The program long_job.py, running on host machine Server1, finished at 2019-11-22T19:09:01.441997. Got exception KeyboardInterrupt.
+    The program long_job.py, running on host machine Server1, finished at November 22, 2019 at 09:30PM. Got exception KeyboardInterrupt.
 
-An optional argument to SendEndNotification is the IFTTT key, which as previously described, has several ways of input.
+An optional argument to SendCompletionNotification is the IFTTT key, which as previously described, has several ways of input.
 
 If you prefer to not use it as a context manager, you also use it in the following way:
 
@@ -88,7 +88,7 @@ If you prefer to not use it as a context manager, you also use it in the followi
     from pyifttt.webhook import send_end_notification
 
     execute_long_job()
-    send_end_notification('test_event')
+    send_completion_notification('test_event')
 
 
 License
