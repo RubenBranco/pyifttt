@@ -85,7 +85,7 @@ If you prefer to not use it as a context manager, you also use it in the followi
 
 .. code:: python
 
-    from pyifttt.webhook import send_end_notification
+    from pyifttt.webhook import send_completion_notification
 
     execute_long_job()
     send_completion_notification('test_event')
