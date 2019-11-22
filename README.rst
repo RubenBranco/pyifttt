@@ -7,7 +7,7 @@ This project was born from the need to receive push notifications on a smartphon
 
 Copyright ® 2019, Ruben Branco <ruben.branco@outlook.pt>. All rights reserved.
 
-Links: https://github.com/RubenBranco/pyifttt | https://pypi.org/manage/project/pyifttt
+Links: https://github.com/RubenBranco/pyifttt | https://pypi.org/project/pyifttt/
 
 Installation
 ------------
